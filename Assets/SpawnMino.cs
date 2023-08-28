@@ -15,7 +15,14 @@ public class SpawnMino : MonoBehaviour
     {   
         for(int i = 0; i < Minos.Length; i++)
         {
-            Instantiate(Minos[i], new Vector3(12, 16-i*3, 0), Quaternion.identity);
+            if (i % 2 == 0)
+            {
+                Instantiate(Minos[i], new Vector3(-5, 16 - (i/2) * 5, 0), Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(Minos[i], new Vector3(12, 16 - (i/2) * 5, 0), Quaternion.identity);
+            }
         }
     }
 }
