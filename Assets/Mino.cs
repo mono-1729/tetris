@@ -4,14 +4,33 @@ using UnityEngine;
 
 public class Mino : MonoBehaviour
 {
-    [SerializeField] Camera _cam;
+    // ’Ç‰Á
+    private Vector3 screenPoint;
+    private Vector3 offset;
 
-    private void OnMouseDrag()
+    // Start is called before the first frame update
+    void Start()
     {
-        transform.position = (Vector2)_cam.ScreenToWorldPoint(Input.mousePosition);
+
     }
 
+    // Update is called once per frame
     void Update()
     {
+
+    }
+
+    // ’Ç‰Á
+    void OnMouseDown()
+    {
+        this.screenPoint = Camera.main.WorldToScreenPoint(transform.position);
+        this.offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+    }
+    // ’Ç‰Á
+    void OnMouseDrag()
+    {
+        Vector3 currentScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+        Vector3 currentPosition = Camera.main.ScreenToWorldPoint(currentScreenPoint) + this.offset;
+        transform.position = currentPosition;
     }
 }

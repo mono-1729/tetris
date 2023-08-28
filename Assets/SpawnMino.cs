@@ -17,7 +17,7 @@ public class SpawnMino : MonoBehaviour
         {
             if (i % 2 == 0)
             {
-                Instantiate(Minos[i], new Vector3(-5, 16 - (i/2) * 5, 0), Quaternion.identity);
+                Instantiate(Minos[i], new Vector3(-3, 16 - (i/2) * 5, 0), Quaternion.identity);
             }
             else
             {
